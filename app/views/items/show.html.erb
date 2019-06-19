@@ -1,0 +1,26 @@
+<div class="container-fluid">
+<div class="media">
+  <%= image_tag @item.item_img.url(:item_show) %>
+  <div class="media-body">
+    <h5 class="mt-0"><%= @item.name %></h5>
+    <span style="font-size: 1em">
+        <% @categories.each do |c| %>
+            <% if c == @categories.last %>
+                <%= c.name %>
+            <% else %>
+                <%= c.name %>, 
+            <% end %>
+        <% end %>
+    </span><br><hr>
+    <%= @item.description %>
+  </div>
+</div>
+<hr>
+<% if user_signed_in? %>
+    <% if @item.user_id == current_user.id %>
+        <%= link_to "Szerkesztés", edit_item_path(@item), class: "btn btn-warning btn-md" %>
+        <%= link_to "Törlés", item_path(@item), class: "btn btn-danger btn-md", method: :delete, data: { confirm: "Biztos vagy benne?" } %>
+    <% end %>
+<% end %>
+<p>&nbsp</p>
+</div>

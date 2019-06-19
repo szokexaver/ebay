@@ -1,0 +1,25 @@
+<div class="container-fluid">
+<h4>Tárgyak</h4>
+<hr>
+<div class="row">
+<% i=0 %>
+    <% @items.each do |item| %> 
+        <% i=i+1 %>
+        <% if i==5 %>
+            </div>
+            <div class="row">
+            <% i=0 %>
+        <%end%>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card">
+            <%= image_tag item.item_img.url(:item_index), class: "card-img-top" %>
+            <div class="card-body">
+                <h5 class="card-title"><%= item.name %></h5>
+                <p class="card-text"><%= item.description[0, 100] %>...</p>
+                <%= link_to "Részletek", item_path(item), class: "btn btn-primary" %>
+            </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+</div>

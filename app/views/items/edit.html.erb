@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>Tárgy szerkesztése</h1>
+
+    <%= simple_form_for @item, :html => { :multipart => true } do |f| %>
+        <%= f.input :name, label: "Megnevezés" %>
+        <%= f.association :categories, label: "Válassz kategóriát", as: :check_boxes %>
+        <%= f.file_field :item_img, label: "Kép" %>
+        <%= f.input :description, label: "Leírás" %>
+        <%= f.submit 'Módosít', class: 'btn btn-primary' %>
+    <% end %>
+</div>
